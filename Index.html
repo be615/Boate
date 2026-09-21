@@ -1,0 +1,1889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Boateng Emmanuel | Student Hub</title>
+
+<meta name="description"
+content="Boateng Emmanuel Student Hub - study resources, quizzes, games and student tools.">
+
+<style>
+/* =========================================================
+   BOATENG EMMANUEL STUDENT HUB
+   SINGLE FILE WEBSITE
+========================================================= */
+
+:root {
+    --bg: #f5f7fb;
+    --card: #ffffff;
+    --text: #172033;
+    --muted: #687386;
+    --primary: #635bff;
+    --secondary: #00b894;
+    --accent: #ffb703;
+    --danger: #ff5c5c;
+    --border: #e5e8ef;
+    --shadow: 0 15px 40px rgba(30, 40, 80, .10);
+    --nav: rgba(255,255,255,.88);
+}
+
+body.dark {
+    --bg: #0c1020;
+    --card: #151b2e;
+    --text: #f4f7ff;
+    --muted: #a9b1c7;
+    --primary: #817aff;
+    --secondary: #00d2a0;
+    --accent: #ffc857;
+    --border: #28304a;
+    --shadow: 0 15px 40px rgba(0,0,0,.35);
+    --nav: rgba(12,16,32,.90);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    transition: .3s;
+}
+
+button,
+input {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* ================= NAVIGATION ================= */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: var(--nav);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--border);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 15px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 21px;
+    font-weight: 800;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.logo span {
+    color: var(--secondary);
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: .3s;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+.nav-buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.icon-btn {
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    font-size: 18px;
+}
+
+.menu-btn {
+    display: none;
+}
+
+/* ================= GENERAL ================= */
+
+section {
+    padding: 90px 20px;
+}
+
+.container {
+    max-width: 1150px;
+    margin: auto;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-title h2 {
+    font-size: 35px;
+    margin-bottom: 8px;
+}
+
+.section-title p {
+    color: var(--muted);
+}
+
+.btn {
+    border: none;
+    padding: 13px 22px;
+    border-radius: 12px;
+    font-weight: 700;
+    transition: .3s;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-secondary {
+    background: var(--secondary);
+    color: white;
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+}
+
+/* ================= HERO ================= */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 120px;
+    overflow: hidden;
+    position: relative;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: var(--primary);
+    opacity: .08;
+    right: -150px;
+    top: 100px;
+    animation: float 6s ease-in-out infinite;
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.badge {
+    display: inline-block;
+    background: rgba(99,91,255,.12);
+    color: var(--primary);
+    padding: 7px 14px;
+    border-radius: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(45px, 7vw, 76px);
+    line-height: 1.05;
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: var(--primary);
+}
+
+.hero p {
+    color: var(--muted);
+    font-size: 18px;
+    max-width: 650px;
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.hero-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    padding: 35px;
+    box-shadow: var(--shadow);
+    animation: float 5s ease-in-out infinite;
+}
+
+.student-avatar {
+    width: 130px;
+    height: 130px;
+    margin: auto;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 55px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+}
+
+.hero-card h3 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.hero-card p {
+    text-align: center;
+    font-size: 14px;
+}
+
+/* ================= STATS ================= */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 15px;
+}
+
+.stat-card {
+    padding: 25px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    text-align: center;
+}
+
+.stat-card h3 {
+    color: var(--primary);
+    font-size: 30px;
+}
+
+/* ================= SUBJECTS ================= */
+
+.subject-grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+}
+
+.subject-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 25px;
+    border-radius: 20px;
+    transition: .3s;
+}
+
+.subject-card:hover {
+    transform: translateY(-7px);
+    box-shadow: var(--shadow);
+}
+
+.subject-icon {
+    font-size: 40px;
+    margin-bottom: 12px;
+}
+
+.subject-card h3 {
+    margin-bottom: 8px;
+}
+
+.subject-card p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* ================= DASHBOARD ================= */
+
+.dashboard {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.dashboard-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    padding: 30px;
+    box-shadow: var(--shadow);
+}
+
+.progress {
+    height: 12px;
+    background: var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 15px 0;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 72%;
+    background: linear-gradient(90deg,var(--primary),var(--secondary));
+    border-radius: inherit;
+}
+
+/* ================= SEARCH ================= */
+
+.search-box {
+    max-width: 650px;
+    margin: 0 auto 35px;
+    position: relative;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 17px 20px;
+    border-radius: 15px;
+    border: 1px solid var(--border);
+    outline: none;
+    background: var(--card);
+    color: var(--text);
+}
+
+/* ================= TOOLS ================= */
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+
+.tool {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 28px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.tool-icon {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.timer {
+    font-size: 42px;
+    font-weight: bold;
+    margin: 20px;
+}
+
+/* ================= GAME ================= */
+
+.game-section {
+    background: linear-gradient(135deg,rgba(99,91,255,.08),rgba(0,184,148,.08));
+}
+
+.game-box {
+    max-width: 750px;
+    margin: auto;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 25px;
+    padding: 35px;
+    box-shadow: var(--shadow);
+}
+
+.question {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.answers {
+    display: grid;
+    gap: 12px;
+}
+
+.answer {
+    padding: 15px;
+    background: var(--bg);
+    color: var(--text);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    text-align: left;
+    transition: .2s;
+}
+
+.answer:hover {
+    border-color: var(--primary);
+}
+
+.answer.correct {
+    border-color: var(--secondary);
+}
+
+.answer.wrong {
+    border-color: var(--danger);
+}
+
+.game-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    color: var(--muted);
+}
+
+/* ================= LOGIN ================= */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.65);
+    display: none;
+    place-items: center;
+    z-index: 3000;
+    padding: 20px;
+}
+
+.modal.active {
+    display: grid;
+}
+
+.login-box {
+    width: 100%;
+    max-width: 430px;
+    background: var(--card);
+    border-radius: 25px;
+    padding: 35px;
+    position: relative;
+    box-shadow: 0 25px 80px rgba(0,0,0,.3);
+}
+
+.close {
+    position: absolute;
+    right: 18px;
+    top: 15px;
+    background: none;
+    border: none;
+    color: var(--text);
+    font-size: 25px;
+}
+
+.login-box h2 {
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--bg);
+    color: var(--text);
+    outline: none;
+}
+
+/* ================= FOOTER ================= */
+
+footer {
+    padding: 50px 20px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+}
+
+footer p {
+    color: var(--muted);
+}
+
+.socials {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.socials a {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    color: var(--text);
+    text-decoration: none;
+}
+
+/* ================= ANIMATIONS ================= */
+
+@keyframes float {
+    0%,100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:900px) {
+
+    .nav-links {
+        position: absolute;
+        top: 72px;
+        left: 0;
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        background: var(--card);
+        padding: 20px;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .subject-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .tools-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media(max-width:550px) {
+
+    .section-title h2 {
+        font-size: 28px;
+    }
+
+    .stats,
+    .subject-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 45px;
+    }
+
+    .hero-card {
+        padding: 25px;
+    }
+
+    .game-box {
+        padding: 22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= NAVIGATION ================= -->
+
+<nav class="navbar">
+
+<div class="nav-container">
+
+<a href="#home" class="logo">
+Boateng<span>Hub</span>
+</a>
+
+<ul class="nav-links" id="navLinks">
+<li><a href="#home">Home</a></li>
+<li><a href="#subjects">Subjects</a></li>
+<li><a href="#dashboard">Dashboard</a></li>
+<li><a href="#tools">Tools</a></li>
+<li><a href="#game">Game</a></li>
+<li><a href="#about">About</a></li>
+</ul>
+
+<div class="nav-buttons">
+
+<button class="icon-btn" onclick="toggleTheme()" id="themeBtn">
+🌙
+</button>
+
+<button class="icon-btn menu-btn" onclick="toggleMenu()">
+☰
+</button>
+
+</div>
+
+</div>
+</nav>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+<div class="container hero-content">
+
+<div class="fade-in">
+
+<span class="badge">🎓 STUDENT HUB</span>
+
+<h1>
+Welcome to
+<span>Boateng Hub</span>
+</h1>
+
+<p>
+A modern student platform for learning, revision,
+practice tests, educational games and productivity.
+</p>
+
+<div class="hero-buttons">
+
+<a href="#subjects" class="btn btn-primary">
+Explore Subjects
+</a>
+
+<button class="btn btn-secondary" onclick="openLogin()">
+🔐 Student Login
+</button>
+
+</div>
+
+</div>
+
+
+<div class="hero-card">
+
+<div class="student-avatar">
+🎓
+</div>
+
+<h3>Boateng Emmanuel</h3>
+
+<p>
+Class 2C7 • Brobe Mensah
+</p>
+
+<div style="text-align:center;margin-top:20px">
+
+<span class="badge">
+✨ Future Leader
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= STATS ================= -->
+
+<section>
+
+<div class="container">
+
+<div class="stats">
+
+<div class="stat-card">
+<h3>10+</h3>
+<p>Subjects</p>
+</div>
+
+<div class="stat-card">
+<h3>100+</h3>
+<p>Questions</p>
+</div>
+
+<div class="stat-card">
+<h3>50+</h3>
+<p>Study Topics</p>
+</div>
+
+<div class="stat-card">
+<h3>24/7</h3>
+<p>Learning</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= SUBJECTS ================= -->
+
+<section id="subjects">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>📚 Study Subjects</h2>
+
+<p>
+Choose a subject and start learning.
+</p>
+
+</div>
+
+
+<div class="search-box">
+
+<input
+type="text"
+id="subjectSearch"
+placeholder="🔍 Search subjects..."
+onkeyup="searchSubjects()">
+
+</div>
+
+
+<div class="subject-grid" id="subjectGrid">
+
+
+<div class="subject-card">
+<div class="subject-icon">⚛️</div>
+<h3>Physics</h3>
+<p>Waves, motion, forces, electricity and more.</p>
+<br>
+<button class="btn btn-primary" onclick="study('Physics')">
+Study
+</button>
+</div>
+
+
+<div class="subject-card">
+<div class="subject-icon">🧬</div>
+<h3>Biology</h3>
+<p>Cells, DNA, respiration, insects and life processes.</p>
+<br>
+<button class="btn btn-primary" onclick="study('Biology')">
+Study
+</button>
+</div>
+
+
+<div class="subject-card">
+<div class="subject-icon">📐</div>
+<h3>Mathematics</h3>
+<p>Algebra, geometry, statistics and calculations.</p>
+<br>
+<button class="btn btn-primary" onclick="study('Mathematics')">
+Study
+</button>
+</div>
+
+
+<div class="subject-card">
+<div class="subject-icon">💻</div>
+<h3>ICT</h3>
+<p>Programming, computer systems, networks and web design.</p>
+<br>
+<button class="btn btn-primary" onclick="study('ICT')">
+Study
+</button>
+</div>
+
+
+<div class="subject-card">
+<div class="subject-icon">🌍</div>
+<h3>Geography</h3>
+<p>Maps, environment, population and physical geography.</p>
+<br>
+<button class="btn btn-primary" onclick="study('Geography')">
+Study
+</button>
+</div>
+
+
+<div class="subject-card">
+<div class="subject-icon">🏛️</div>
+<h3>Social Studies</h3>
+<p>Citizenship, national development and social issues.</p>
+<br>
+<button class="btn btn-primary" onclick="study('Social Studies')">
+Study
+</button>
+</div>
+
+
+<div class="subject-card">
+<div class="subject-icon">📝</div>
+<h3>English</h3>
+<p>Grammar, comprehension, writing and communication.</p>
+<br>
+<button class="btn btn-primary" onclick="study('English')">
+Study
+</button>
+</div>
+
+
+<div class="subject-card">
+<div class="subject-icon">🌱</div>
+<h3>Agricultural Science</h3>
+<p>Crops, animals, pests and agricultural practices.</p>
+<br>
+<button class="btn btn-primary" onclick="study('Agriculture')">
+Study
+</button>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= DASHBOARD ================= -->
+
+<section id="dashboard">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>📊 Student Dashboard</h2>
+
+<p>Track your learning progress.</p>
+
+</div>
+
+
+<div class="dashboard">
+
+<div class="dashboard-card">
+
+<h3>📈 Learning Progress</h3>
+
+<p style="color:var(--muted);">
+Overall study progress
+</p>
+
+<div class="progress">
+<div class="progress-bar"></div>
+</div>
+
+<strong>72% completed</strong>
+
+<br><br>
+
+<button class="btn btn-primary" onclick="increaseProgress()">
+Continue Learning
+</button>
+
+</div>
+
+
+<div class="dashboard-card">
+
+<h3>🏆 Achievements</h3>
+
+<br>
+
+<p>🥇 Quiz Starter</p>
+<p>📚 Study Explorer</p>
+<p>⚡ Fast Learner</p>
+<p>🎯 Goal Setter</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= TOOLS ================= -->
+
+<section id="tools">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>🛠️ Student Tools</h2>
+
+<p>Useful tools for your study sessions.</p>
+
+</div>
+
+
+<div class="tools-grid">
+
+
+<div class="tool">
+
+<div class="tool-icon">⏱️</div>
+
+<h3>Study Timer</h3>
+
+<div class="timer" id="timer">
+25:00
+</div>
+
+<button class="btn btn-primary" onclick="startTimer()">
+Start
+</button>
+
+<button class="btn btn-outline" onclick="resetTimer()">
+Reset
+</button>
+
+</div>
+
+
+<div class="tool">
+
+<div class="tool-icon">🧮</div>
+
+<h3>Quick Calculator</h3>
+
+<input
+id="calcInput"
+placeholder="Example: 25*4+10"
+style="
+width:100%;
+padding:12px;
+margin:15px 0;
+border:1px solid var(--border);
+border-radius:10px;
+background:var(--bg);
+color:var(--text);
+">
+
+<button class="btn btn-primary" onclick="calculate()">
+Calculate
+</button>
+
+<p id="calcResult" style="margin-top:15px;font-weight:bold;">
+Answer appears here
+</p>
+
+</div>
+
+
+<div class="tool">
+
+<div class="tool-icon">💡</div>
+
+<h3>Study Tip</h3>
+
+<p id="studyTip">
+Small daily study sessions are better than waiting until the last minute.
+</p>
+
+<br>
+
+<button class="btn btn-secondary" onclick="newTip()">
+New Tip
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= GAME ================= -->
+
+<section id="game" class="game-section">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>🎮 Knowledge Challenge</h2>
+
+<p>Test your knowledge.</p>
+
+</div>
+
+
+<div class="game-box">
+
+<div class="game-info">
+
+<span id="questionNumber">
+Question 1 / 10
+</span>
+
+<span>
+Score: <strong id="score">0</strong>
+</span>
+
+</div>
+
+
+<div class="question" id="question">
+Loading question...
+</div>
+
+<div class="answers" id="answers">
+</div>
+
+<br>
+
+<button
+class="btn btn-primary"
+id="nextBtn"
+onclick="nextQuestion()"
+style="display:none">
+
+Next Question →
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section id="about">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>👨‍🎓 About Boateng Hub</h2>
+
+<p>
+A personal student learning platform.
+</p>
+
+</div>
+
+<div class="dashboard">
+
+<div class="dashboard-card">
+
+<h3>🎓 About the Student</h3>
+
+<br>
+
+<p>
+<strong>Name:</strong> Boateng Emmanuel
+</p>
+
+<p>
+<strong>Class:</strong> 2C7
+</p>
+
+<p>
+<strong>House:</strong> Brobe Mensah
+</p>
+
+<p>
+<strong>Platform:</strong> Boateng Student Hub
+</p>
+
+</div>
+
+
+<div class="dashboard-card">
+
+<h3>🚀 Mission</h3>
+
+<br>
+
+<p>
+The goal of this platform is to make studying,
+revision and educational practice more interactive
+and enjoyable.
+</p>
+
+<br>
+
+<button class="btn btn-primary" onclick="openLogin()">
+Join the Hub
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<h2>
+Boateng<span style="color:var(--secondary)">Hub</span>
+</h2>
+
+<div class="socials">
+
+<a href="#" onclick="showMessage('Social links can be added here.')">
+🌐
+</a>
+
+<a href="#" onclick="showMessage('Your GitHub profile can be added here.')">
+💻
+</a>
+
+<a href="#" onclick="showMessage('Your contact link can be added here.')">
+✉️
+</a>
+
+</div>
+
+<p>
+© <span id="year"></span> Boateng Emmanuel Student Hub.
+</p>
+
+<p style="margin-top:5px;font-size:13px;">
+Built with HTML, CSS & JavaScript.
+</p>
+
+</footer>
+
+
+<!-- ================= LOGIN MODAL ================= -->
+
+<div class="modal" id="loginModal">
+
+<div class="login-box">
+
+<button class="close" onclick="closeLogin()">
+×
+</button>
+
+<h2>🔐 Student Login</h2>
+
+<p style="color:var(--muted);margin-bottom:20px;">
+Enter your details to access your student dashboard.
+</p>
+
+<div class="form-group">
+
+<label>Name</label>
+
+<input
+type="text"
+id="loginName"
+placeholder="Enter your name">
+
+</div>
+
+
+<div class="form-group">
+
+<label>Email</label>
+
+<input
+type="email"
+id="loginEmail"
+placeholder="student@example.com">
+
+</div>
+
+
+<div class="form-group">
+
+<label>Password</label>
+
+<input
+type="password"
+id="loginPassword"
+placeholder="Enter password">
+
+</div>
+
+
+<button
+class="btn btn-primary"
+style="width:100%"
+onclick="login()">
+
+Login
+
+</button>
+
+<p
+id="loginMessage"
+style="margin-top:15px;text-align:center;">
+</p>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   JAVASCRIPT
+========================================================= */
+
+
+/* ================= THEME ================= */
+
+const savedTheme = localStorage.getItem("theme");
+
+if(savedTheme === "dark") {
+    document.body.classList.add("dark");
+    document.getElementById("themeBtn").textContent = "☀️";
+}
+
+function toggleTheme() {
+
+    document.body.classList.toggle("dark");
+
+    const dark = document.body.classList.contains("dark");
+
+    localStorage.setItem("theme", dark ? "dark" : "light");
+
+    document.getElementById("themeBtn").textContent =
+        dark ? "☀️" : "🌙";
+}
+
+
+/* ================= MOBILE MENU ================= */
+
+function toggleMenu() {
+
+    document
+    .getElementById("navLinks")
+    .classList.toggle("active");
+
+}
+
+
+/* ================= LOGIN ================= */
+
+function openLogin() {
+
+    document
+    .getElementById("loginModal")
+    .classList.add("active");
+
+}
+
+function closeLogin() {
+
+    document
+    .getElementById("loginModal")
+    .classList.remove("active");
+
+}
+
+function login() {
+
+    const name =
+        document.getElementById("loginName").value.trim();
+
+    const email =
+        document.getElementById("loginEmail").value.trim();
+
+    const password =
+        document.getElementById("loginPassword").value;
+
+    const message =
+        document.getElementById("loginMessage");
+
+    if(!name || !email || !password) {
+
+        message.textContent =
+            "Please complete all fields.";
+
+        message.style.color = "var(--danger)";
+
+        return;
+    }
+
+    localStorage.setItem("studentName", name);
+
+    message.textContent =
+        "✅ Login successful! Welcome, " + name + ".";
+
+    message.style.color = "var(--secondary)";
+
+    setTimeout(() => {
+
+        closeLogin();
+
+        showMessage(
+            "Welcome to Boateng Hub, " + name + "!"
+        );
+
+    },1000);
+
+}
+
+
+/* ================= SUBJECT SEARCH ================= */
+
+function searchSubjects() {
+
+    const input =
+        document
+        .getElementById("subjectSearch")
+        .value
+        .toLowerCase();
+
+    const cards =
+        document.querySelectorAll(".subject-card");
+
+    cards.forEach(card => {
+
+        const text =
+            card.textContent.toLowerCase();
+
+        card.style.display =
+            text.includes(input)
+            ? "block"
+            : "none";
+
+    });
+
+}
+
+
+/* ================= STUDY BUTTON ================= */
+
+function study(subject) {
+
+    showMessage(
+        "📚 " + subject +
+        " study section selected!"
+    );
+
+}
+
+
+/* ================= DASHBOARD PROGRESS ================= */
+
+let progress = 72;
+
+function increaseProgress() {
+
+    progress += 4;
+
+    if(progress > 100) {
+        progress = 100;
+    }
+
+    document.querySelector(".progress-bar").style.width =
+        progress + "%";
+
+    document.querySelector(".progress-bar")
+        .parentElement
+        .nextElementSibling
+        .textContent =
+        progress + "% completed";
+
+}
+
+
+/* ================= CALCULATOR ================= */
+
+function calculate() {
+
+    const input =
+        document.getElementById("calcInput").value;
+
+    const result =
+        document.getElementById("calcResult");
+
+    if(!input) {
+
+        result.textContent =
+            "Enter a calculation.";
+
+        return;
+    }
+
+    try {
+
+        /*
+          This simple calculator is intended for
+          basic arithmetic expressions.
+        */
+
+        const answer =
+            Function('"use strict"; return (' + input + ')')();
+
+        result.textContent =
+            "Answer: " + answer;
+
+    } catch {
+
+        result.textContent =
+            "Invalid calculation.";
+
+    }
+
+}
+
+
+/* ================= STUDY TIMER ================= */
+
+let timerSeconds = 25 * 60;
+
+let timerInterval = null;
+
+function updateTimer() {
+
+    const minutes =
+        Math.floor(timerSeconds / 60);
+
+    const seconds =
+        timerSeconds % 60;
+
+    document.getElementById("timer").textContent =
+        String(minutes).padStart(2,"0")
+        + ":" +
+        String(seconds).padStart(2,"0");
+
+}
+
+function startTimer() {
+
+    if(timerInterval) return;
+
+    timerInterval = setInterval(() => {
+
+        if(timerSeconds <= 0) {
+
+            clearInterval(timerInterval);
+
+            timerInterval = null;
+
+            showMessage(
+                "⏰ Study session complete!"
+            );
+
+            return;
+        }
+
+        timerSeconds--;
+
+        updateTimer();
+
+    },1000);
+
+}
+
+function resetTimer() {
+
+    clearInterval(timerInterval);
+
+    timerInterval = null;
+
+    timerSeconds = 25 * 60;
+
+    updateTimer();
+
+}
+
+
+/* ================= STUDY TIPS ================= */
+
+const tips = [
+
+"Study difficult topics when your mind is fresh.",
+
+"Practice questions instead of only reading notes.",
+
+"Take short breaks during long study sessions.",
+
+"Explain a topic in your own words to test your understanding.",
+
+"Review your mistakes after every practice test.",
+
+"Create a realistic study timetable.",
+
+"Sleep well before an examination.",
+
+"Use diagrams when studying science topics."
+
+];
+
+function newTip() {
+
+    const random =
+        Math.floor(Math.random() * tips.length);
+
+    document.getElementById("studyTip").textContent =
+        tips[random];
+
+}
+
+
+/* ================= QUIZ ================= */
+
+const questions = [
+
+{
+    q: "What is the basic unit of life?",
+    answers: [
+        "Atom",
+        "Cell",
+        "Tissue",
+        "Organ"
+    ],
+    correct: 1
+},
+
+{
+    q: "Which force pulls objects toward the Earth?",
+    answers: [
+        "Friction",
+        "Magnetism",
+        "Gravity",
+        "Tension"
+    ],
+    correct: 2
+},
+
+{
+    q: "What does HTML stand for?",
+    answers: [
+        "HyperText Markup Language",
+        "HighText Machine Language",
+        "Hyperlink Text Management Language",
+        "Home Tool Markup Language"
+    ],
+    correct: 0
+},
+
+{
+    q: "Which organ pumps blood around the body?",
+    answers: [
+        "Lungs",
+        "Brain",
+        "Heart",
+        "Kidney"
+    ],
+    correct: 2
+},
+
+{
+    q: "What is the unit of frequency?",
+    answers: [
+        "Metre",
+        "Hertz",
+        "Newton",
+        "Joule"
+    ],
+    correct: 1
+},
+
+{
+    q: "Which gas do plants mainly use during photosynthesis?",
+    answers: [
+        "Oxygen",
+        "Nitrogen",
+        "Carbon dioxide",
+        "Hydrogen"
+    ],
+    correct: 2
+},
+
+{
+    q: "Which device is used to enter text into a computer?",
+    answers: [
+        "Monitor",
+        "Keyboard",
+        "Speaker",
+        "Projector"
+    ],
+    correct: 1
+},
+
+{
+    q: "What is 12 × 5?",
+    answers: [
+        "50",
+        "60",
+        "70",
+        "80"
+    ],
+    correct: 1
+},
+
+{
+    q: "Which part of a plant absorbs water from the soil?",
+    answers: [
+        "Flower",
+        "Leaf",
+        "Root",
+        "Fruit"
+    ],
+    correct: 2
+},
+
+{
+    q: "Which language is commonly used to style web pages?",
+    answers: [
+        "HTML",
+        "CSS",
+        "Python",
+        "SQL"
+    ],
+    correct: 1
+}
+
+];
+
+let currentQuestion = 0;
+
+let score = 0;
+
+function loadQuestion() {
+
+    const question =
+        questions[currentQuestion];
+
+    document.getElementById("questionNumber")
+        .textContent =
+        "Question " +
+        (currentQuestion + 1) +
+        " / " +
+        questions.length;
+
+    document.getElementById("question")
+        .textContent =
+        question.q;
+
+    const answersBox =
+        document.getElementById("answers");
+
+    answersBox.innerHTML = "";
+
+    question.answers.forEach((answer,index) => {
+
+        const button =
+            document.createElement("button");
+
+        button.className = "answer";
+
+        button.textContent =
+            String.fromCharCode(65 + index) +
+            ". " +
+            answer;
+
+        button.onclick = () =>
+            selectAnswer(index,button);
+
+        answersBox.appendChild(button);
+
+    });
+
+    document.getElementById("nextBtn")
+        .style.display = "none";
+
+}
+
+
+function selectAnswer(index,button) {
+
+    const question =
+        questions[currentQuestion];
+
+    const buttons =
+        document.querySelectorAll(".answer");
+
+    buttons.forEach(btn => {
+        btn.disabled = true;
+    });
+
+    if(index === question.correct) {
+
+        button.classList.add("correct");
+
+        score++;
+
+        document.getElementById("score")
+            .textContent = score;
+
+    } else {
+
+        button.classList.add("wrong");
+
+        buttons[question.correct]
+            .classList.add("correct");
+
+    }
+
+    document.getElementById("nextBtn")
+        .style.display = "inline-block";
+
+}
+
+
+function nextQuestion() {
+
+    currentQuestion++;
+
+    if(currentQuestion >= questions.length) {
+
+        showMessage(
+            "🎉 Quiz complete! Your score is " +
+            score +
+            "/" +
+            questions.length
+        );
+
+        currentQuestion = 0;
+
+        score = 0;
+
+        document.getElementById("score")
+            .textContent = "0";
+
+    }
+
+    loadQuestion();
+
+}
+
+
+/* ================= MESSAGE ================= */
+
+function showMessage(message) {
+
+    alert(message);
+
+}
+
+
+/* ================= YEAR ================= */
+
+document.getElementById("year")
+    .textContent =
+    new Date().getFullYear();
+
+
+/* ================= CLOSE MODAL ================= */
+
+document.getElementById("loginModal")
+.addEventListener("click",function(event) {
+
+    if(event.target === this) {
+        closeLogin();
+    }
+
+});
+
+
+/* ================= START QUIZ ================= */
+
+loadQuestion();
+
+updateTimer();
+
+</script>
+
+</body>
+</html>
