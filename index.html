@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="GlowBeauty - Cosmetics, skincare, makeup, haircare and fragrance.">
+<title>GlowBeauty Cosmetics</title>
+
+<style>
+:root{
+  --pink:#e83e8c;
+  --dark:#17121a;
+  --light:#fff7fb;
+  --card:#ffffff;
+  --text:#29232b;
+  --muted:#777;
+  --gold:#d99b32;
+  --shadow:0 10px 30px rgba(0,0,0,.10);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--light);
+  color:var(--text);
+  line-height:1.6;
+  transition:.3s;
+}
+body.dark{
+  --light:#151219;
+  --card:#211c25;
+  --text:#fff;
+  --muted:#bbb;
+  --shadow:0 10px 30px rgba(0,0,0,.4);
+}
+
+a{text-decoration:none;color:inherit}
+button{font:inherit;cursor:pointer}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(12px);
+  box-shadow:0 2px 15px rgba(0,0,0,.08);
+}
+.dark header{background:rgba(25,20,28,.94)}
+
+.navbar{
+  max-width:1200px;
+  margin:auto;
+  min-height:75px;
+  padding:12px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.logo{
+  font-size:25px;
+  font-weight:900;
+  color:var(--pink);
+  white-space:nowrap;
+}
+.logo span{color:var(--gold)}
+
+nav{
+  display:flex;
+  gap:5px;
+  align-items:center;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+nav a{
+  padding:8px 10px;
+  font-size:14px;
+  font-weight:600;
+  border-radius:20px;
+}
+nav a:hover{
+  background:var(--pink);
+  color:white;
+}
+
+.nav-actions{
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+.icon-btn{
+  width:40px;
+  height:40px;
+  border:0;
+  border-radius:50%;
+  background:#f5e7ef;
+  color:var(--text);
+}
+.dark .icon-btn{background:#332a36}
+
+.cart-count{
+  position:absolute;
+  margin:-8px 0 0 -12px;
+  background:var(--pink);
+  color:white;
+  border-radius:50%;
+  font-size:11px;
+  padding:2px 6px;
+}
+
+section{
+  max-width:1200px;
+  margin:auto;
+  padding:80px 20px;
+}
+
+.hero{
+  max-width:none;
+  min-height:650px;
+  display:flex;
+  align-items:center;
+  background:
+    linear-gradient(90deg,rgba(20,10,20,.78),rgba(20,10,20,.15)),
+    url("https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=1800&q=85")
+    center/cover;
+  color:white;
+  padding-left:max(20px,calc((100% - 1160px)/2));
+}
+
+.hero-content{max-width:620px}
+.hero h1{
+  font-size:clamp(45px,7vw,82px);
+  line-height:1;
+  margin-bottom:25px;
+}
+.hero h1 span{color:#ff72ad}
+.hero p{
+  font-size:20px;
+  max-width:560px;
+  margin-bottom:30px;
+}
+
+.btn{
+  display:inline-block;
+  border:0;
+  padding:13px 23px;
+  border-radius:30px;
+  background:var(--pink);
+  color:white;
+  font-weight:700;
+  transition:.3s;
+}
+.btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 25px rgba(232,62,140,.35);
+}
+.btn.outline{
+  background:transparent;
+  border:2px solid white;
+  margin-left:8px;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:45px;
+}
+.section-title h2{
+  font-size:40px;
+  margin-bottom:8px;
+}
+.section-title p{color:var(--muted)}
+
+.features{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
+.feature{
+  background:var(--card);
+  padding:30px 20px;
+  text-align:center;
+  border-radius:20px;
+  box-shadow:var(--shadow);
+}
+.feature-icon{font-size:40px;margin-bottom:10px}
+
+.products{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:22px;
+}
+.product{
+  background:var(--card);
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  transition:.3s;
+}
+.product:hover{transform:translateY(-8px)}
+.product img{
+  width:100%;
+  height:260px;
+  object-fit:cover;
+}
+.product-info{padding:18px}
+.product-info h3{margin-bottom:5px}
+.product-info p{
+  color:var(--muted);
+  font-size:14px;
+  min-height:44px;
+}
+.price{
+  color:var(--pink);
+  font-weight:900;
+  font-size:20px;
+  margin:10px 0;
+}
+.product .btn{width:100%;text-align:center}
+
+.banner{
+  max-width:1160px;
+  margin:30px auto;
+  border-radius:25px;
+  padding:55px 40px;
+  color:white;
+  background:
+    linear-gradient(90deg,rgba(100,15,60,.8),rgba(100,15,60,.25)),
+    url("https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=1600&q=85")
+    center/cover;
+}
+
+.page-hero{
+  max-width:none;
+  text-align:center;
+  padding:100px 20px;
+  background:
+    linear-gradient(rgba(70,15,45,.7),rgba(70,15,45,.7)),
+    url("https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1800&q=85")
+    center/cover;
+  color:white;
+}
+.page-hero h1{font-size:55px}
+
+.filters{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:35px;
+}
+.filter{
+  border:1px solid #ddd;
+  background:var(--card);
+  color:var(--text);
+  padding:10px 18px;
+  border-radius:25px;
+}
+.filter.active,.filter:hover{
+  background:var(--pink);
+  color:white;
+}
+
+.search-box{
+  max-width:600px;
+  margin:0 auto 35px;
+  display:flex;
+}
+.search-box input{
+  flex:1;
+  padding:15px 20px;
+  border:1px solid #ddd;
+  border-radius:30px 0 0 30px;
+  background:var(--card);
+  color:var(--text);
+}
+.search-box button{
+  border:0;
+  background:var(--pink);
+  color:white;
+  padding:0 25px;
+  border-radius:0 30px 30px 0;
+}
+
+.about{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:50px;
+  align-items:center;
+}
+.about img{
+  width:100%;
+  border-radius:25px;
+  box-shadow:var(--shadow);
+}
+.about h2{font-size:42px;margin-bottom:20px}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  margin-top:30px;
+}
+.stat{
+  text-align:center;
+  padding:20px;
+  background:var(--card);
+  border-radius:15px;
+  box-shadow:var(--shadow);
+}
+.stat strong{
+  display:block;
+  font-size:35px;
+  color:var(--pink);
+}
+
+.reviews{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+.review{
+  background:var(--card);
+  padding:25px;
+  border-radius:20px;
+  box-shadow:var(--shadow);
+}
+.stars{color:#e3a321;font-size:20px}
+.review-author{
+  margin-top:15px;
+  font-weight:bold;
+}
+
+.contact{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+}
+.contact-card{
+  background:var(--card);
+  padding:30px;
+  border-radius:20px;
+  box-shadow:var(--shadow);
+}
+.form-group{margin-bottom:15px}
+.form-group label{
+  display:block;
+  margin-bottom:5px;
+  font-weight:bold;
+}
+.form-group input,
+.form-group textarea,
+.form-group select{
+  width:100%;
+  padding:13px;
+  border:1px solid #ddd;
+  border-radius:10px;
+  background:var(--light);
+  color:var(--text);
+}
+.form-group textarea{height:140px;resize:vertical}
+
+.offer{
+  background:linear-gradient(135deg,#e83e8c,#8e315f);
+  color:white;
+  border-radius:25px;
+  padding:55px;
+  text-align:center;
+}
+.offer h2{font-size:48px}
+
+footer{
+  background:#17121a;
+  color:white;
+  padding:60px 20px 20px;
+}
+.footer-grid{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:40px;
+}
+footer h3{color:#ff72ad;margin-bottom:15px}
+footer a{
+  display:block;
+  color:#ddd;
+  margin:7px 0;
+}
+.social{
+  display:flex;
+  gap:10px;
+  margin-top:15px;
+}
+.social a{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  background:#302531;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.copyright{
+  text-align:center;
+  border-top:1px solid #3b313b;
+  margin-top:40px;
+  padding-top:20px;
+  color:#aaa;
+}
+
+/* CART */
+.cart-panel{
+  position:fixed;
+  right:-420px;
+  top:0;
+  width:min(400px,100%);
+  height:100vh;
+  background:var(--card);
+  z-index:2000;
+  box-shadow:-10px 0 30px rgba(0,0,0,.2);
+  transition:.4s;
+  padding:25px;
+  overflow:auto;
+}
+.cart-panel.open{right:0}
+.cart-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
+}
+.close{border:0;background:none;font-size:25px;color:var(--text)}
+.cart-item{
+  display:flex;
+  gap:12px;
+  padding:15px 0;
+  border-bottom:1px solid #ddd;
+}
+.cart-item img{
+  width:65px;
+  height:65px;
+  object-fit:cover;
+  border-radius:10px;
+}
+.cart-total{
+  font-size:22px;
+  font-weight:bold;
+  margin:25px 0;
+}
+
+.toast{
+  position:fixed;
+  bottom:25px;
+  left:50%;
+  transform:translate(-50%,100px);
+  background:#222;
+  color:white;
+  padding:13px 25px;
+  border-radius:30px;
+  z-index:3000;
+  transition:.3s;
+}
+.toast.show{transform:translate(-50%,0)}
+
+.page{display:none}
+.page.active{display:block}
+
+@media(max-width:950px){
+  nav{display:none}
+  .features,.products{grid-template-columns:repeat(2,1fr)}
+  .reviews{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+
+@media(max-width:650px){
+  section{padding:55px 15px}
+  .hero{min-height:570px;padding:30px 20px}
+  .hero h1{font-size:48px}
+  .hero p{font-size:17px}
+  .features,.products,.about,.contact,.stats,.footer-grid{
+    grid-template-columns:1fr;
+  }
+  .page-hero h1{font-size:40px}
+  .section-title h2{font-size:32px}
+  .btn.outline{margin:10px 0 0}
+}
+
+/* animation */
+.reveal{
+  opacity:0;
+  transform:translateY(30px);
+  transition:.7s;
+}
+.reveal.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="navbar">
+  <a href="#" class="logo" onclick="showPage('home')">Glow<span>Beauty</span></a>
+
+  <nav>
+    <a href="#" onclick="showPage('home')">Home</a>
+    <a href="#" onclick="showPage('shop')">Shop</a>
+    <a href="#" onclick="showPage('skincare')">Skincare</a>
+    <a href="#" onclick="showPage('makeup')">Makeup</a>
+    <a href="#" onclick="showPage('haircare')">Haircare</a>
+    <a href="#" onclick="showPage('fragrance')">Fragrance</a>
+    <a href="#" onclick="showPage('about')">About</a>
+    <a href="#" onclick="showPage('offers')">Offers</a>
+    <a href="#" onclick="showPage('reviews')">Reviews</a>
+    <a href="#" onclick="showPage('contact')">Contact</a>
+  </nav>
+
+  <div class="nav-actions">
+    <button class="icon-btn" onclick="toggleDark()" title="Dark mode">🌙</button>
+    <button class="icon-btn" onclick="toggleCart()" title="Cart">
+      🛍️<span class="cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+</div>
+</header>
+
+<!-- 1 HOME -->
+<main id="home" class="page active">
+
+<section class="hero">
+<div class="hero-content reveal">
+  <h1>Beauty Begins<br>With <span>You.</span></h1>
+  <p>Discover premium skincare, makeup, haircare and fragrances designed to help you express your natural beauty.</p>
+  <button class="btn" onclick="showPage('shop')">Shop Collection</button>
+  <button class="btn outline" onclick="showPage('about')">Discover Us</button>
+</div>
+</section>
+
+<section>
+<div class="features reveal">
+  <div class="feature"><div class="feature-icon">🌸</div><h3>Premium Beauty</h3><p>Carefully selected beauty products.</p></div>
+  <div class="feature"><div class="feature-icon">🚚</div><h3>Fast Delivery</h3><p>Convenient delivery to your doorstep.</p></div>
+  <div class="feature"><div class="feature-icon">💎</div><h3>Quality First</h3><p>Products chosen with quality in mind.</p></div>
+  <div class="feature"><div class="feature-icon">💖</div><h3>Made For You</h3><p>Beauty essentials for every style.</p></div>
+</div>
+</section>
+
+<section>
+<div class="section-title">
+<h2>Featured Products</h2>
+<p>Some of our customer favourites.</p>
+</div>
+<div class="products" id="featuredProducts"></div>
+</section>
+
+<div class="banner">
+<h2>Glow More. Feel More.</h2>
+<p>Explore our newest beauty collection.</p><br>
+<button class="btn" onclick="showPage('offers')">View Offers</button>
+</div>
+
+</main>
+
+<!-- 2 SHOP -->
+<main id="shop" class="page">
+<div class="page-hero"><h1>Shop All</h1><p>Find your next beauty essential.</p></div>
+
+<section>
+<div class="search-box">
+<input id="searchInput" type="text" placeholder="Search products..." onkeyup="searchProducts()">
+<button>🔍 Search</button>
+</div>
+
+<div class="filters">
+<button class="filter active" onclick="filterProducts('all',this)">All</button>
+<button class="filter" onclick="filterProducts('skincare',this)">Skincare</button>
+<button class="filter" onclick="filterProducts('makeup',this)">Makeup</button>
+<button class="filter" onclick="filterProducts('haircare',this)">Haircare</button>
+<button class="filter" onclick="filterProducts('fragrance',this)">Fragrance</button>
+</div>
+
+<div class="products" id="shopProducts"></div>
+</section>
+</main>
+
+<!-- 3 SKINCARE -->
+<main id="skincare" class="page">
+<div class="page-hero"><h1>Skincare</h1><p>Build a simple and beautiful skincare routine.</p></div>
+<section>
+<div class="section-title"><h2>Skincare Collection</h2><p>Cleanse, hydrate and nourish.</p></div>
+<div class="products" id="skincareProducts"></div>
+</section>
+</main>
+
+<!-- 4 MAKEUP -->
+<main id="makeup" class="page">
+<div class="page-hero"><h1>Makeup</h1><p>Express yourself with confidence.</p></div>
+<section>
+<div class="section-title"><h2>Makeup Collection</h2><p>Colours and essentials for your look.</p></div>
+<div class="products" id="makeupProducts"></div>
+</section>
+</main>
+
+<!-- 5 HAIRCARE -->
+<main id="haircare" class="page">
+<div class="page-hero"><h1>Haircare</h1><p>Give your hair the care it deserves.</p></div>
+<section>
+<div class="section-title"><h2>Haircare Collection</h2><p>Everyday essentials for beautiful hair.</p></div>
+<div class="products" id="haircareProducts"></div>
+</section>
+</main>
+
+<!-- 6 FRAGRANCE -->
+<main id="fragrance" class="page">
+<div class="page-hero"><h1>Fragrance</h1><p>Find a scent that matches your personality.</p></div>
+<section>
+<div class="section-title"><h2>Fragrance Collection</h2><p>Fresh, floral and elegant scents.</p></div>
+<div class="products" id="fragranceProducts"></div>
+</section>
+</main>
+
+<!-- 7 ABOUT -->
+<main id="about" class="page">
+<div class="page-hero"><h1>About GlowBeauty</h1><p>Beauty, confidence and self-expression.</p></div>
+
+<section>
+<div class="about reveal">
+<img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=1000&q=85" alt="Beauty products">
+<div>
+<h2>Beauty Made Simple.</h2>
+<p>
+GlowBeauty is a modern cosmetics concept created for people who love skincare,
+makeup, haircare and beautiful fragrances.
+</p>
+<br>
+<p>
+Our goal is to make discovering beauty products simple, enjoyable and inspiring.
+From everyday essentials to special occasion favourites, we bring everything
+together in one beautiful place.
+</p>
+
+<div class="stats">
+<div class="stat"><strong>50+</strong>Products</div>
+<div class="stat"><strong>10K+</strong>Customers</div>
+<div class="stat"><strong>4.9</strong>Rating</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+<!-- 8 OFFERS -->
+<main id="offers" class="page">
+<div class="page-hero"><h1>Special Offers</h1><p>Beauty deals you don't want to miss.</p></div>
+
+<section>
+<div class="offer">
+<h2>BIG BEAUTY SALE</h2>
+<p>Save up to 30% on selected beauty products.</p>
+<br>
+<button class="btn" onclick="showPage('shop')">Shop Sale</button>
+</div>
+
+<br><br>
+
+<div class="products" id="offerProducts"></div>
+</section>
+</main>
+
+<!-- 9 REVIEWS -->
+<main id="reviews" class="page">
+<div class="page-hero"><h1>Customer Reviews</h1><p>What our customers say.</p></div>
+
+<section>
+<div class="reviews">
+<div class="review">
+<div class="stars">★★★★★</div>
+<p>“The website is beautiful and the product selection is amazing. I found exactly what I needed.”</p>
+<div class="review-author">— Ama K.</div>
+</div>
+
+<div class="review">
+<div class="stars">★★★★★</div>
+<p>“I love the skincare collection. Everything is easy to find and the design is very clean.”</p>
+<div class="review-author">— Sarah M.</div>
+</div>
+
+<div class="review">
+<div class="stars">★★★★★</div>
+<p>“GlowBeauty makes shopping for beauty products feel simple and enjoyable.”</p>
+<div class="review-author">— Jessica A.</div>
+</div>
+</div>
+</section>
+</main>
+
+<!-- 10 CONTACT -->
+<main id="contact" class="page">
+<div class="page-hero"><h1>Contact Us</h1><p>We would love to hear from you.</p></div>
+
+<section>
+<div class="contact">
+
+<div class="contact-card">
+<h2>Get In Touch</h2><br>
+<p>📍 Kumasi, Ghana</p>
+<p>📞 +233 00 000 0000</p>
+<p>✉️ hello@glowbeauty.example</p>
+<br>
+<h3>Opening Hours</h3>
+<p>Monday – Saturday: 8:00 AM – 6:00 PM</p>
+<p>Sunday: 10:00 AM – 4:00 PM</p>
+</div>
+
+<div class="contact-card">
+<h2>Send a Message</h2><br>
+<form onsubmit="sendMessage(event)">
+<div class="form-group">
+<label>Name</label>
+<input required type="text" placeholder="Your name">
+</div>
+
+<div class="form-group">
+<label>Email</label>
+<input required type="email" placeholder="Your email">
+</div>
+
+<div class="form-group">
+<label>Message</label>
+<textarea required placeholder="Write your message..."></textarea>
+</div>
+
+<button class="btn" type="submit">Send Message</button>
+</form>
+</div>
+
+</div>
+</section>
+</main>
+
+<!-- CART -->
+<div class="cart-panel" id="cartPanel">
+<div class="cart-head">
+<h2>Your Cart</h2>
+<button class="close" onclick="toggleCart()">×</button>
+</div>
+<div id="cartItems"></div>
+<div class="cart-total">Total: $<span id="cartTotal">0.00</span></div>
+<button class="btn" style="width:100%" onclick="checkout()">Checkout</button>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<footer>
+<div class="footer-grid">
+<div>
+<h2 class="logo">Glow<span>Beauty</span></h2>
+<p>Your destination for skincare, makeup, haircare and fragrance.</p>
+<div class="social">
+<a href="#">f</a>
+<a href="#">◎</a>
+<a href="#">𝕏</a>
+<a href="#">▶</a>
+</div>
+</div>
+
+<div>
+<h3>Shop</h3>
+<a href="#" onclick="showPage('shop')">All Products</a>
+<a href="#" onclick="showPage('skincare')">Skincare</a>
+<a href="#" onclick="showPage('makeup')">Makeup</a>
+<a href="#" onclick="showPage('haircare')">Haircare</a>
+</div>
+
+<div>
+<h3>Discover</h3>
+<a href="#" onclick="showPage('about')">About Us</a>
+<a href="#" onclick="showPage('offers')">Offers</a>
+<a href="#" onclick="showPage('reviews')">Reviews</a>
+</div>
+
+<div>
+<h3>Help</h3>
+<a href="#" onclick="showPage('contact')">Contact</a>
+<a href="#">Shipping</a>
+<a href="#">Returns</a>
+<a href="#">FAQ</a>
+</div>
+</div>
+
+<div class="copyright">
+© 2026 GlowBeauty Cosmetics. All rights reserved.
+</div>
+</footer>
+
+<script>
+const products = [
+{
+ name:"Rose Glow Serum",
+ category:"skincare",
+ price:24.99,
+ image:"https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=800&q=80"
+},
+{
+ name:"Hydrating Face Cream",
+ category:"skincare",
+ price:19.99,
+ image:"https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&fit=crop&w=800&q=80"
+},
+{
+ name:"Vitamin C Serum",
+ category:"skincare",
+ price:22.99,
+ image:"https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=800&q=80"
+},
+{
+ name:"Daily Face Cleanser",
+ category:"skincare",
+ price:15.99,
+ image:"https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=80"
+},
+{
+ name:"Velvet Lipstick",
+ category:"makeup",
+ price:12.99,
+ image:"https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=800&q=80"
+},
+{
+ name:"Rose Blush",
+ category:"makeup",
+ price:14.99,
+ image:"https://images.unsplash.com/photo-1596704017254-9b121068fb31?auto=format&fit=crop&w=800&q=80"
+},
+{
+ name:"Glow Foundation",
+ category:"makeup",
+ price:21.99,
+ image:"https://images.unsplash.com/photo-1631730486572-226d1f595b68?auto=format&fit=crop&w=800&q=80"
+},
+{
+ name:"Beauty Eyeshadow",
+ category:"makeup",
+ price:18.99,
+ image:"https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=800&q=80"
+},
+{
+ name:"Silky Hair Oil",
+ category:"haircare",
+ price:17.99,
+ image:"https://images.unsplash.com/photo-1527799820374-dcf8e03f7f5f?auto=format&fit=crop&w=800&q=80"
+},
+{
+ name:"Repair Hair Mask",
+ category:"haircare",
+ price:20.99,
+ image:"https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80"
+},
+{
+ name:"Luxury Shampoo",
+ category:"haircare",
+ price:16.99,
+ image:"https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=800&q=80"
+},
+{
+ name:"Curl Care Cream",
+ category:"haircare",
+ price:18.49,
+ image:"https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=800&q=80"
+},
+{
+ name:"Floral Dream Perfume",
+ category:"fragrance",
+ price:39.99,
+ image:"https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=800&q=80"
+},
+{
+ name:"Golden Rose Perfume",
+ category:"fragrance",
+ price:44.99,
+ image:"https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=800&q=80"
+},
+{
+ name:"Fresh Bloom",
+ category:"fragrance",
+ price:34.99,
+ image:"https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=800&q=80"
+},
+{
+ name:"Midnight Elegance",
+ category:"fragrance",
+ price:49.99,
+ image:"https://images.unsplash.com/photo-1563170351-be82bc888aa4?auto=format&fit=crop&w=800&q=80"
+}
+];
+
+let cart=[];
+let currentFilter="all";
+
+function productCard(p){
+return `
+<div class="product reveal" data-category="${p.category}" data-name="${p.name.toLowerCase()}">
+<img src="${p.image}" alt="${p.name}" loading="lazy">
+<div class="product-info">
+<h3>${p.name}</h3>
+<p>Premium ${p.category} beauty essential.</p>
+<div class="price">$${p.price.toFixed(2)}</div>
+<button class="btn" onclick="addToCart('${p.name}')">Add to Cart</button>
+</div>
+</div>`;
+}
+
+function renderProducts(list,elementId){
+document.getElementById(elementId).innerHTML=list.map(productCard).join("");
+observeReveals();
+}
+
+function renderAll(){
+renderProducts(products.slice(0,4),"featuredProducts");
+renderProducts(products,"shopProducts");
+renderProducts(products.filter(p=>p.category==="skincare"),"skincareProducts");
+renderProducts(products.filter(p=>p.category==="makeup"),"makeupProducts");
+renderProducts(products.filter(p=>p.category==="haircare"),"haircareProducts");
+renderProducts(products.filter(p=>p.category==="fragrance"),"fragranceProducts");
+renderProducts(products.slice(0,8),"offerProducts");
+}
+
+function showPage(id){
+document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+const page=document.getElementById(id);
+if(page)page.classList.add("active");
+window.scrollTo({top:0,behavior:"smooth"});
+observeReveals();
+}
+
+function filterProducts(category,button){
+currentFilter=category;
+document.querySelectorAll(".filter").forEach(b=>b.classList.remove("active"));
+button.classList.add("active");
+
+let list=category==="all"?products:products.filter(p=>p.category===category);
+renderProducts(list,"shopProducts");
+}
+
+function searchProducts(){
+const q=document.getElementById("searchInput").value.toLowerCase();
+
+const list=products.filter(p=>
+p.name.toLowerCase().includes(q) ||
+p.category.toLowerCase().includes(q)
+);
+
+renderProducts(list,"shopProducts");
+}
+
+function addToCart(name){
+const product=products.find(p=>p.name===name);
+if(!product)return;
+
+cart.push(product);
+updateCart();
+
+showToast(product.name+" added to cart!");
+}
+
+function updateCart(){
+document.getElementById("cartCount").textContent=cart.length;
+
+const box=document.getElementById("cartItems");
+
+if(cart.length===0){
+box.innerHTML="<p>Your cart is empty.</p>";
+document.getElementById("cartTotal").textContent="0.00";
+return;
+}
+
+box.innerHTML=cart.map((p,i)=>`
+<div class="cart-item">
+<img src="${p.image}" alt="">
+<div style="flex:1">
+<strong>${p.name}</strong>
+<div>$${p.price.toFixed(2)}</div>
+<button onclick="removeCart(${i})" style="border:0;background:none;color:#e83e8c">Remove</button>
+</div>
+</div>
+`).join("");
+
+const total=cart.reduce((sum,p)=>sum+p.price,0);
+document.getElementById("cartTotal").textContent=total.toFixed(2);
+}
+
+function removeCart(index){
+cart.splice(index,1);
+updateCart();
+}
+
+function toggleCart(){
+document.getElementById("cartPanel").classList.toggle("open");
+}
+
+function checkout(){
+if(cart.length===0){
+showToast("Your cart is empty.");
+return;
+}
+showToast("Checkout demo — connect a payment system to accept payments.");
+}
+
+function toggleDark(){
+document.body.classList.toggle("dark");
+localStorage.setItem("darkMode",
+document.body.classList.contains("dark"));
+}
+
+if(localStorage.getItem("darkMode")==="true"){
+document.body.classList.add("dark");
+}
+
+function sendMessage(e){
+e.preventDefault();
+showToast("Message sent successfully!");
+e.target.reset();
+}
+
+function showToast(message){
+const toast=document.getElementById("toast");
+toast.textContent=message;
+toast.classList.add("show");
+
+setTimeout(()=>toast.classList.remove("show"),2500);
+}
+
+function observeReveals(){
+const items=document.querySelectorAll(".reveal");
+
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("visible");
+}
+});
+},{threshold:.1});
+
+items.forEach(item=>observer.observe(item));
+}
+
+renderAll();
+updateCart();
+observeReveals();
+</script>
+
+</body>
+</html>
